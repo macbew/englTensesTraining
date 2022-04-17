@@ -1,0 +1,29 @@
+* {
+  /* border-color: red; */
+  margin: 0;
+  padding: 0;
+  border-style: border-box;
+}
+
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+  flex-direction: column;
+  height: 100vh;
+  font-size: 24px;
+}
+
+.row1{
+  display: flex;
+  align-items:center;
+  justify-content:space-around;
+  flex-direction:column;
+}
+
+.russ{
+  border:currentColor;
+  border-bottom: 2px solid #e3e3e3;
+  outline: none;
+};
