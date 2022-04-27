@@ -1,0 +1,16 @@
+{
+  "name": "engl.std",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d ./"
+  },
+  "author": "Mikhalchuk",
+  "license": "ISC",
+  "type": "module",
+  "homepage": "https://macbew.github.io/englTensesTraining",
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
