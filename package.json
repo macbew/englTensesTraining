@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages "
   },
   "author": "Mikhalchuk",
   "license": "ISC",
   "type": "module",
-  "dependencies": {}
+  "homepage": "https://macbew.github.io/englTensesTraining",
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
 }
