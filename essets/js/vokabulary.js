@@ -87,7 +87,7 @@ export default {
     ],
     "form":[
       [
-       "will I ",           "i will ",           "i wil not ",
+       "will I ",           "i will ",           "i will not ",
        "do I ",             "i ",                "i do not ",
        "did I ",            "i ",                "i did not ",
       ],
@@ -97,7 +97,7 @@ export default {
        "did you ",          "you ",              "you did not ",
       ],
       [
-       "wil he ",           "he will ",          "he will not ",
+       "will he ",           "he will ",          "he will not ",
        "does he ",          "he ",               "he does not ",
        "did he ",           "he ",               "he did not ",
       ],
