@@ -5,9 +5,10 @@ let randPronoun = 0;
 let randExample = 0;
 let tenses = 0;
 let verb = 0;
-// let punctuation = "."
-
-// const time = {future: 0, present: 1, past: 2};
+let numTime = 0;
+let checkEng = '';
+let count = 0;//for help()
+let temp = [];//for help()
 
 function getTenses(example) {
   if (example > 2 && randExample < 6) {
@@ -27,18 +28,21 @@ function getPunctuation(example) {
 }
 
 function start() {
-  $('input[name=engl]').val('');
+  count = 0;//обнуляем счётчик
+  temp = [];//обнуляем подсказку
+  $('input[name=engl]').val('');// обнуляем поле ввода
   randPronoun = numUtils.getRandomArbitrary(0, 6);
   randExample = numUtils.getRandomArbitrary(0, 8);
-  tenses = getTenses(randExample);
   verb = numUtils.getRandomArbitrary(0, vokab.ru.verbs.length - 1);
+  numTime = chooseTimeEngVerb(randPronoun, randExample);
+  checkEng = vokab.eng.form[randPronoun][randExample] + vokab.eng.verbs[verb][numTime];
+  tenses = getTenses(randExample);
 
   let punctuation = getPunctuation(randExample);
   $('.russ').text(vokab.ru.form[randPronoun][randExample] + vokab.ru.verbs[verb][tenses][randPronoun] + punctuation);//выбор русского предложения
   $('.result').text('?');
 }
 
-start();
 
 function chooseTimeEngVerb(randomPronoun, randExemple) {
   if (randExemple === 7) {
@@ -53,10 +57,8 @@ function chooseTimeEngVerb(randomPronoun, randExemple) {
 function check() {
   let input = $('input[name=engl]').val().replace(/[^a-zа-яё0-9\s]/gi, '').trim().toLowerCase();
   console.log(input);
-
-  let numTime = chooseTimeEngVerb(randPronoun, randExample);
-  let checkEng = vokab.eng.form[randPronoun][randExample] + vokab.eng.verbs[verb][numTime];
-
+  
+  
   console.log(checkEng);
   if (input === checkEng) {
     $('.result').text("true")
@@ -64,6 +66,20 @@ function check() {
     $('.result').text("false")
   }
 }
+
+
+function help() {
+  temp.push(checkEng[count]);
+  count++;
+  $('input[name="engl"]').val(temp.join(''));
+}
+
+start();
+
+$('.help').click(function (e) {
+  e.preventDefault();
+  help();
+})
 
 $(document).keypress(function (e) {
   if (e.key === "Enter") {
@@ -76,11 +92,11 @@ $('.check').click(function (e) { //проверка перевода
   check();
 })
 
-$('.next').click(function (e) { //проверка перевода
+$('.next').click(function (e) {
   e.preventDefault();
   start();
 })
 
-$('input[name="engl"]').click(function () {//reset befor type answer
+$('input[name="engl"]').click(function () {//reset result befor type answer
   $('.result').text('?');
 })
