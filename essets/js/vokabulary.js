@@ -83,7 +83,7 @@ export default {
       ["read","reads","read"],
       ["play","plays","played"],
       ["drink","drinks","drank"],
-      ["watch","watches","wathed"]
+      ["watch","watches","watched"]
     ],
     "form":[
       [
