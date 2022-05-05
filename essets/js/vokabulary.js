@@ -83,13 +83,13 @@ export default {
       ["read","reads","read"],
       ["play","plays","played"],
       ["drink","drinks","drank"],
-      ["watch","watches","wathed"]
+      ["watch","watches","watched"]
     ],
     "form":[
       [
-       "will I ",           "i will ",           "i will not ",
-       "do I ",             "i ",                "i do not ",
-       "did I ",            "i ",                "i did not ",
+       "will i ",           "i will ",           "i will not ",
+       "do i ",             "i ",                "i do not ",
+       "did i ",            "i ",                "i did not ",
       ],
       [
        "will you ",         "you will ",         "you will not ",
