@@ -88,7 +88,7 @@ $(document).keypress(function (e) {
 })
 
 $(document).keydown(function (e) {
-  if (e.which == 39) {
+  if (e.which == 38) {
     start();
   }
 })
