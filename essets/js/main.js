@@ -86,6 +86,11 @@ $(document).keypress(function (e) {
     check();
   }
 })
+$(document).keypress(function (e) {
+  if (e.key === "right arrow") {
+    start();
+  }
+})
 
 $('.check').click(function (e) { //проверка перевода
   e.preventDefault();
