@@ -9,6 +9,7 @@ let numTime = 0;
 let checkEng = '';
 let count = 0;//for help()
 let temp = [];//for help()
+let result = false;
 
 function getTenses(example) {
   if (example > 2 && randExample < 6) {
@@ -57,16 +58,17 @@ function chooseTimeEngVerb(randomPronoun, randExemple) {
 function check() {
   let input = $('input[name=engl]').val().replace(/[^a-zа-яё0-9\s]/gi, '').trim().toLowerCase();
   console.log(input);
-  
-  
+
+
   console.log(checkEng);
   if (input === checkEng) {
-    $('.result').text("true")
+    $('.result').text("true");
+    result = true;
   } else {
     $('.result').text("false")
+    result = false;
   }
 }
-
 
 function help() {
   temp.push(checkEng[count]);
@@ -83,15 +85,19 @@ $('.help').click(function (e) {
 
 $(document).keypress(function (e) {
   if (e.key === "Enter") {
-    check();
+    if (result === false) {
+      check();
+    } else {
+      start();
+    }
   }
 })
 
-$(document).keydown(function (e) {
-  if (e.which == 38) {
-    start();
-  }
-})
+// $(document).keydown(function (e) {
+//   if (e.which == 38) {
+//     start();
+//   }
+// })
 
 $('.check').click(function (e) { //проверка перевода
   e.preventDefault();
