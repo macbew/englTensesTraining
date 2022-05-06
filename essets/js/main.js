@@ -29,6 +29,7 @@ function getPunctuation(example) {
 }
 
 function start() {
+  result = false;
   count = 0;//обнуляем счётчик
   temp = [];//обнуляем подсказку
   $('input[name=engl]').val('');// обнуляем поле ввода
