@@ -86,8 +86,9 @@ $(document).keypress(function (e) {
     check();
   }
 })
-$(document).keypress(function (e) {
-  if (e.key === "right arrow") {
+
+$(document).keydown(function (e) {
+  if (e.which == 39) {
     start();
   }
 })
