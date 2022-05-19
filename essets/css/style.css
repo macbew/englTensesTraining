@@ -30,4 +30,5 @@
 
 .blur{
   filter: blur(5px);
+  cursor: pointer;
 }
