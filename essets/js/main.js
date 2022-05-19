@@ -33,6 +33,7 @@ function start() {
   count = 0;//обнуляем счётчик
   temp = [];//обнуляем подсказку
   $('input[name=engl]').val('');// обнуляем поле ввода
+  $('#blur').addClass('blur');//блюрим
   randPronoun = numUtils.getRandomArbitrary(0, 6);
   randExample = numUtils.getRandomArbitrary(0, 8);
   verb = numUtils.getRandomArbitrary(0, vokab.ru.verbs.length - 1);
@@ -94,12 +95,6 @@ $(document).keypress(function (e) {
   }
 })
 
-// $(document).keydown(function (e) {
-//   if (e.which == 38) {
-//     start();
-//   }
-// })
-
 $('.check').click(function (e) { //проверка перевода
   e.preventDefault();
   check();
@@ -112,4 +107,8 @@ $('.next').click(function (e) {
 
 $('input[name="engl"]').click(function () {//reset result befor type answer
   $('.result').text('?');
+})
+
+$('.blur').click(function (e) { //проверка перевода
+  $('.blur').removeClass('blur');
 })
