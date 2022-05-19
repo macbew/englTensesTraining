@@ -59,10 +59,8 @@ function chooseTimeEngVerb(randomPronoun, randExemple) {
 
 function check() {
   let input = $('input[name=engl]').val().replace(/[^a-zа-яё0-9\s]/gi, '').trim().toLowerCase();
-  console.log(input);
-
-
-  console.log(checkEng);
+  console.log('your - ',input,'; soure - ',checkEng);
+  // console.log();
   if (input === checkEng) {
     $('.result').text("true");
     result = true;
@@ -85,7 +83,7 @@ $('.help').click(function (e) {
   help();
 })
 
-$(document).keypress(function (e) {
+$(document).keypress(function (e) {//срабатывает 2 раза - разобратсья
   if (e.key === "Enter") {
     if (result === false) {
       check();
