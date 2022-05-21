@@ -6,19 +6,19 @@ let randExample = 0;
 let tenses = 0;
 let verb = 0;
 let numTime = 0;
-let checkEng = '';
+// let checkEng = '';
 let count = 0;//for help()
 let temp = [];//for help()
 let result = false;
 
-function getTenses(example) {
+function getTenses(example) {//получение времени
   if (example > 2 && randExample < 6) {
-    return 1;
+    return 1;//present
   }
   if (example > 5) {
-    return 2;
+    return 2;//past
   }
-  return 0
+  return 0//future
 }
 
 function getPunctuation(example) {
@@ -34,11 +34,14 @@ function start() {
   temp = [];//обнуляем подсказку
   $('input[name=engl]').val('');// обнуляем поле ввода
   $('#blur').addClass('blur');//блюрим
-  randPronoun = numUtils.getRandomArbitrary(0, 6);
+  randPronoun = numUtils.getRandomArbitrary(0, 5);
   randExample = numUtils.getRandomArbitrary(0, 8);
   verb = numUtils.getRandomArbitrary(0, vokab.ru.verbs.length - 1);
   numTime = chooseTimeEngVerb(randPronoun, randExample);
-  checkEng = vokab.eng.form[randPronoun][randExample] + vokab.eng.verbs[verb][numTime];
+  // if((randExample + 1) % 3 === 0){
+  //   checkEng = vokab.eng.form[randPronoun][randExample] + vokab.eng.verbs[verb][numTime];//англ вариант
+  // }
+  // checkEng = vokab.eng.form[randPronoun][randExample] + vokab.eng.verbs[verb][numTime];//англ вариант
   tenses = getTenses(randExample);
 
   let punctuation = getPunctuation(randExample);
@@ -59,16 +62,29 @@ function chooseTimeEngVerb(randomPronoun, randExemple) {
 
 function check() {
   let input = $('input[name=engl]').val().replace(/[^a-zа-яё0-9\s]/gi, '').trim().toLowerCase();
-  console.log(input);
 
-
-  console.log(checkEng);
-  if (input === checkEng) {
-    $('.result').text("true");
-    result = true;
+  if ((randExample + 1) % 3 === 0) {
+    let checkEngNegativ = vokab.eng.form[randPronoun][randExample][0] + vokab.eng.verbs[verb][numTime];//англ вариант
+    let checkEngNegativ2 = vokab.eng.form[randPronoun][randExample][1] + vokab.eng.verbs[verb][numTime];//англ вариант
+    console.log('your - ', input, '; soure - ', checkEngNegativ, 'OR ', checkEngNegativ2);
+    if (input === checkEngNegativ || input === checkEngNegativ2) {
+      $('.result').text("true");
+      result = true;
+    } else {
+      $('.result').text("false")
+      result = false;
+    }
   } else {
-    $('.result').text("false")
-    result = false;
+    let checkEng = vokab.eng.form[randPronoun][randExample] + vokab.eng.verbs[verb][numTime];//англ вариант
+    console.log('your - ', input, '; soure - ', checkEng);
+    // console.log();
+    if (input === checkEng) {
+      $('.result').text("true");
+      result = true;
+    } else {
+      $('.result').text("false")
+      result = false;
+    }
   }
 }
 
@@ -85,7 +101,7 @@ $('.help').click(function (e) {
   help();
 })
 
-$(document).keypress(function (e) {
+$(document).keypress(function (e) {//срабатывает 2 раза - разобратсья
   if (e.key === "Enter") {
     if (result === false) {
       check();
