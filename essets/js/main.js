@@ -60,36 +60,46 @@ function chooseTimeEngVerb(randomPronoun, randExemple) {
   return 0
 }
 
+function getEnglSentence() {   //англ вариант
+  let checkEng = [];
+  if ((randExample + 1) % 3 === 0) {
+    checkEng.push(vokab.eng.form[randPronoun][randExample][0] + vokab.eng.verbs[verb][numTime]);
+    checkEng.push(vokab.eng.form[randPronoun][randExample][1] + vokab.eng.verbs[verb][numTime]);
+    // console.log('your - ', input, '; soure - ', checkEng);
+  } else {
+    checkEng = vokab.eng.form[randPronoun][randExample] + vokab.eng.verbs[verb][numTime];
+  }
+  return checkEng;
+}
+
 function check() {
   let input = $('input[name=engl]').val().replace(/[^a-zа-яё0-9\s]/gi, '').trim().toLowerCase();
-
-  if ((randExample + 1) % 3 === 0) {
-    let checkEngNegativ = vokab.eng.form[randPronoun][randExample][0] + vokab.eng.verbs[verb][numTime];//англ вариант
-    let checkEngNegativ2 = vokab.eng.form[randPronoun][randExample][1] + vokab.eng.verbs[verb][numTime];//англ вариант
-    console.log('your - ', input, '; soure - ', checkEngNegativ, 'OR ', checkEngNegativ2);
-    if (input === checkEngNegativ || input === checkEngNegativ2) {
+  const englSentence = getEnglSentence();
+  if (Array.isArray(englSentence)) {
+    if (input === englSentence[0] || input === englSentence[1]) {
       $('.result').text("true");
       result = true;
     } else {
       $('.result').text("false")
       result = false;
     }
+  }else if (input === englSentence) {
+    $('.result').text("true");
+    result = true;
   } else {
-    let checkEng = vokab.eng.form[randPronoun][randExample] + vokab.eng.verbs[verb][numTime];//англ вариант
-    console.log('your - ', input, '; soure - ', checkEng);
-    // console.log();
-    if (input === checkEng) {
-      $('.result').text("true");
-      result = true;
-    } else {
-      $('.result').text("false")
-      result = false;
-    }
+    $('.result').text("false")
+    result = false;
   }
+  console.log('your - ', input, '; soure - ', englSentence);
 }
 
 function help() {
-  temp.push(checkEng[count]);
+  const englSentence = getEnglSentence();
+  if(Array.isArray(englSentence)){
+    temp.push(englSentence[0][count]);
+  } else{
+  temp.push(englSentence[count]);
+}
   count++;
   $('input[name="engl"]').val(temp.join(''));
 }
