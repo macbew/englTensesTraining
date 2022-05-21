@@ -44,6 +44,6 @@ footer {
 @media screen and (max-width: 800px),
 screen and (max-height: 800px) {
   img {
-    max-width: 500px;
+    max-width: 400px;
   }
 }
