@@ -54,7 +54,7 @@ function chooseTimeEngVerb(randomPronoun, randExemple) {
   if (randExemple === 7) {
     return 2
   }
-  if (randExemple === 4 && (randomPronoun > 1 && randomPronoun < 5)) {
+  if (randExemple === 4 && (randomPronoun > 1 && randomPronoun < 4)) {
     return 1
   }
   return 0
