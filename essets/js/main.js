@@ -38,10 +38,6 @@ function start() {
   randExample = numUtils.getRandomArbitrary(0, 8);
   verb = numUtils.getRandomArbitrary(0, vokab.ru.verbs.length - 1);
   numTime = chooseTimeEngVerb(randPronoun, randExample);
-  // if((randExample + 1) % 3 === 0){
-  //   checkEng = vokab.eng.form[randPronoun][randExample] + vokab.eng.verbs[verb][numTime];//англ вариант
-  // }
-  // checkEng = vokab.eng.form[randPronoun][randExample] + vokab.eng.verbs[verb][numTime];//англ вариант
   tenses = getTenses(randExample);
 
   let punctuation = getPunctuation(randExample);
@@ -72,22 +68,31 @@ function getEnglSentence() {   //англ вариант
   return checkEng;
 }
 
+function blink (color) {  
+  $('.result').addClass(`blink${color}`);
+  setTimeout(()=>{$('.result').removeClass(`blink${color}`)},1000)
+}
+
 function check() {
   let input = $('input[name=engl]').val().replace(/[^a-zа-яё0-9\s]/gi, '').trim().toLowerCase();
   const englSentence = getEnglSentence();
-  if (Array.isArray(englSentence)) {
+  if (Array.isArray(englSentence)) {//if get Array
     if (input === englSentence[0] || input === englSentence[1]) {
       $('.result').text("true");
+      blink('Green');
       result = true;
     } else {
-      $('.result').text("false")
+      $('.result').text("false").addClass("blinkRed")
+      blink('Red');
       result = false;
     }
   }else if (input === englSentence) {
-    $('.result').text("true");
+    $('.result').text("true").addClass("blinkGreen");
+    blink('Green');
     result = true;
   } else {
-    $('.result').text("false")
+    $('.result').text("false").addClass("blinkRed")
+    blink('Red');
     result = false;
   }
   console.log('your - ', input, '; soure - ', englSentence);

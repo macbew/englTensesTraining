@@ -47,3 +47,12 @@ screen and (max-height: 800px) {
     max-width: 300px;
   }
 }
+
+.blinkRed{
+ transition: background-color linear 0.5s;
+  background: red;
+}
+.blinkGreen{
+ transition: background-color linear 0.5s;
+  background: green;
+}
