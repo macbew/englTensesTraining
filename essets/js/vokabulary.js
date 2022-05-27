@@ -21,11 +21,6 @@ export default {
        "Она ",        "Она ",         "Она не ",
        "Она ",        "Она ",         "Она не ",
       ],
-      // [
-      //   "Оно будет ",  "Оно будет ",   "Оно не будет ",
-      //   "Оно ",        "Оно ",         "Оно не ",
-      //   "Оно ",        "Оно ",         "Оно не ",
-      // ],
       [
        "Мы будем ",   "Мы будем ",    "Мы не будем ",
        "Мы ",         "Мы ",          "Мы не ",
@@ -112,11 +107,6 @@ export default {
         "does she ",         "she ",              ["she does not ","she doesnt "],
         "did she ",          "she ",              ["she did not ","she didnt "],
       ],
-      // [
-      //   "will it ",         "it will ",         "it will not ",
-      //   "does it ",         "it ",             "it does not ",
-      //   "did it ",          "it ",              "it did not ",
-      // ],
       [
         "will we ",         "we will ",          ["we will not ","we willnt "],
         "do we ",           "we ",               ["we do not ","we dont "],
